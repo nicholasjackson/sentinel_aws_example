@@ -2,17 +2,8 @@ import "tfplan"
 
 valid_regions = {"staging": "us-west-1", "production": "us-east-1"}
 
-if_aws_ensure_valid_region = func(p) {
-	print(p)
-	if p.type is not "aws" {
-		return true
-	}
-
-	return p.config.region is valid_regions[env.ENV]
-}
-
 main = rule {
-	all tfplan.config.providers as p {
-		if_aws_ensure_valid_region(p)
+	all tfplan.config.providers.aws as p {
+		p.config.region is valid_regions[env.ENV]
 	}
 }
