@@ -1,0 +1,19 @@
+{
+    "mock": {
+      "tfplan": {
+        "config": {
+          "providers": [
+            {
+              "type": "aws",
+              "config": {"region": "us-west-1"}
+            }
+          ]
+        }
+      },
+      "env": {"ENV": "staging"}
+    },
+
+    "test": {
+        "main": true
+    }
+}

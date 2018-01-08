@@ -1,0 +1,19 @@
+{
+    "mock": {
+      "tfplan": {
+        "config": {
+          "providers": [
+            {
+              "type": "gcp",
+              "config": {"region": "something else"}
+            }
+          ]
+        }
+      },
+      "env": {"ENV": "staging"}
+    },
+
+    "test": {
+        "main": true
+    }
+}
