@@ -2,10 +2,12 @@ provider "aws" {
   region = "us-east-1"
 }
 
+/*
 provider "aws" {
   alias  = "west"
   region = "us-west-1"
 }
+*/
 
 resource "aws_s3_bucket" "a" {
   bucket = "nic-sentinel-my-tf-test-bucket"
@@ -17,6 +19,7 @@ resource "aws_s3_bucket" "a" {
   }
 }
 
+/*
 resource "aws_s3_bucket" "b" {
   provider = "aws.west"
 
@@ -28,3 +31,5 @@ resource "aws_s3_bucket" "b" {
     Environment = "Dev"
   }
 }
+*/
+
