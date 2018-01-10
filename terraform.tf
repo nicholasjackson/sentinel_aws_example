@@ -1,3 +1,7 @@
+variable "env" {
+  description = "Envrionment for the Terraform, staging | production"
+}
+
 provider "aws" {
   region = "us-east-1"
 }
