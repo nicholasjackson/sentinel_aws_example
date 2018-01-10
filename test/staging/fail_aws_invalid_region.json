@@ -1,6 +1,9 @@
 {
   "mock": {
     "tfplan": {
+      "variables": {
+        "env": "production"
+      },
       "config": {
         "providers": {
             "aws": {

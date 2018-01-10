@@ -6,9 +6,9 @@
       },
       "config": {
         "providers": {
-            "gcp": {
+            "aws": {
               "alias": [
-                {"config": {"region": "us-something"}}
+                {"config": {"region": "us-east-1"}}
               ]
             }
         }
@@ -17,6 +17,6 @@
   },
 
   "test": {
-      "main": true
+      "main": false
   }
 }

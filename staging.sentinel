@@ -1,15 +1,20 @@
 import "tfplan"
 
-valid_regions = ["us-west-1", "us-east-1"]
+valid_regions = {"production": "us-west-1", "staging": "us-east-1"}
 
 is_not_aws = func(type) {
 	return type is not "aws"
 }
 
 validate_region = func(provider) {
-	return all provider.alias as k, v {
-		v.config.region in valid_regions
+	for provider.alias as k, v {
+		if v.config.region is not valid_regions[tfplan.variables.env] {
+			print(v.config.region, valid_regions[tfplan.variables.env])
+			return false
+		}
 	}
+
+	return true
 }
 
 main = rule {
