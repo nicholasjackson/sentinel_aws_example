@@ -23,6 +23,16 @@ resource "aws_s3_bucket" "a" {
   }
 }
 
+resource "aws_instance" "web" {
+  ami               = "${data.aws_ami.ubuntu.id}"
+  instance_type     = "t2.micro"
+  availability_zone = "us-west-1a"
+
+  tags {
+    Name = "HelloWorld"
+  }
+}
+
 /*
 resource "aws_s3_bucket" "b" {
   provider = "aws.west"

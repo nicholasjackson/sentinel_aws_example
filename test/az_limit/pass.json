@@ -1,0 +1,22 @@
+{
+  "mock": {
+    "tfplan": {
+      "variables": {
+        "env": "production"
+      },
+      "config": {
+        "providers": {
+            "aws": {
+              "alias": [
+                {"config": {"region": "us-west-1"}}
+              ]
+            }
+        }
+      }
+    }
+  },
+
+  "test": {
+      "main": true
+  }
+}
