@@ -24,7 +24,7 @@ resource "aws_s3_bucket" "a" {
 }
 
 resource "aws_instance" "web" {
-  ami               = "${data.aws_ami.ubuntu.id}"
+  ami               = "abc134"
   instance_type     = "t2.micro"
   availability_zone = "us-west-1a"
 
