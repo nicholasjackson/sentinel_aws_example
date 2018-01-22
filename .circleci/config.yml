@@ -37,7 +37,7 @@ jobs:
             ./bin/linux/amd64/github-release release \
               --user nicholasjackson \
               --repo sentinel_aws_example \
-              --tag v0.1.0 \
+              --tag ${CIRCLE_TAG} \
               --name "Latest sentinel policy"
 workflows:
   version: 2
