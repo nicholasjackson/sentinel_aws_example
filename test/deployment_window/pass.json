@@ -1,0 +1,14 @@
+{
+  "mock": {
+    "time": {
+      "day": "tuesday",
+      "hour": 9
+    }
+  },
+
+  "test": {
+    "is_deployment_hours": true,
+    "is_weekday": true,
+    "main": true
+  }
+}

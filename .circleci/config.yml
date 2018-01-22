@@ -1,0 +1,47 @@
+version: 2.0
+
+jobs:
+  test:
+    machine:
+      enabled: true
+    steps:
+      - checkout
+      - run:
+          name: install dependencies
+          command: |
+            wget https://releases.hashicorp.com/sentinel/0.1.0/sentinel_0.1.0_linux_amd64.zip
+            unzip sentinel_0.1.0_linux_amd64.zip
+      - run:
+          name: test
+          command: ./sentinel test -verbose
+  deploy:
+    machine:
+      enabled: true
+    steps:
+      - checkout
+      - run:
+          name: install dependencies
+          command: |
+            wget https://releases.hashicorp.com/sentinel/0.1.0/sentinel_0.1.0_linux_amd64.zip
+            unzip sentinel_0.1.0_linux_amd64.zip
+            wget https://github.com/aktau/github-release/releases/download/v0.7.2/linux-amd64-github-release.tar.bz2
+            tar -xvf linux-amd64-github-release.tar.bz2
+      - run:
+          name: check deployment window
+          command: ./sentinel apply deployment_window.sentinel
+      - run:
+          name: release
+          command: |
+            ./github-release release \
+              --user nicholasjackson \
+              --repo sentinel_aws_example \
+              --tag v0.1.0 \
+              --name "Latest sentinel policy"
+workflows:
+  version: 2
+  test-and-deploy:
+    jobs:
+      - test
+      - deploy:
+          requires:
+            - test
