@@ -2,8 +2,6 @@ import "time"
 
 timespace = time.now
 
-print(timespace)
-
 // Note: Time is CET by default
 is_weekday = rule { timespace.day not in ["saturday", "sunday"] }
 is_deployment_hours = rule { timespace.hour > 8 and timespace.hour < 17 }
