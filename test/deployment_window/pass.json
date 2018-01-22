@@ -1,8 +1,10 @@
 {
   "mock": {
     "time": {
-      "day": "tuesday",
-      "hour": 9
+      "now": {
+        "day": "tuesday",
+        "hour": 9
+      }
     }
   },
 
