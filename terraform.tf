@@ -33,6 +33,7 @@ resource "aws_instance" "web" {
   }
 }
 
+/*
 resource "aws_iam_policy" "policy" {
   name        = "test_policy"
   path        = "/"
@@ -47,13 +48,13 @@ resource "aws_iam_policy" "policy" {
         "iam:PassRole"
       ],
       "Effect": "Allow",
-      "Resource": "ec2:something"
+      "Resource": "*"
     }
   ]
 }
 EOF
 }
-
+*/
 /*
 resource "aws_s3_bucket" "b" {
   provider = "aws.west"
