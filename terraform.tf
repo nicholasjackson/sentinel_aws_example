@@ -47,7 +47,7 @@ resource "aws_iam_policy" "policy" {
         "iam:PassRole"
       ],
       "Effect": "Allow",
-      "Resource": "*"
+      "Resource": "ec2:something"
     }
   ]
 }
