@@ -11,7 +11,6 @@ provider "aws" {
   alias  = "west"
   region = "us-west-1"
 }
-*/
 
 resource "aws_s3_bucket" "a" {
   bucket = "nic-sentinel-my-tf-test-bucket"
@@ -44,6 +43,7 @@ resource "aws_iam_policy" "policy" {
 EOF
 }
 
+*/
 variable "workspace" {
   description = "Allow the override of the workspace, for example if running on TFE workspace is not present"
   default     = ""
