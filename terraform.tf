@@ -23,16 +23,6 @@ resource "aws_s3_bucket" "a" {
   }
 }
 
-resource "aws_instance" "web" {
-  ami               = "abc134"
-  instance_type     = "t2.micro"
-  availability_zone = "us-west-1a"
-
-  tags {
-    Name = "HelloWorlds"
-  }
-}
-
 resource "aws_iam_policy" "policy" {
   name        = "test_policy"
   path        = "/"
@@ -52,6 +42,25 @@ resource "aws_iam_policy" "policy" {
   ]
 }
 EOF
+}
+
+variable "workspace" {
+  description = "Allow the override of the workspace, for example if running on TFE workspace is not present"
+  default     = ""
+}
+
+# Set workspace value to a local variable,
+# config will depend on the variable not directly depend on the workspace.
+# This is useful due to the differences in TFE and OSS, this approach will not require
+# replacement of hard coded workspace values when migrating a config to TFE.
+# https://www.terraform.io/docs/configuration/locals.html
+locals {
+  workspace = "${coalesce("${terraform.workspace}", "${var.workspace}")}"
+}
+
+# Local variables can be referenced with the ${local.name} interpolation syntax
+output "workspace" {
+  value = "${local.workspace}"
 }
 
 /*
